@@ -1,0 +1,14 @@
+<.breadcrumb steps={@steps} title="Installation" />
+
+<div class="space-y-2">
+  <.card title="Add dependency">
+    <.syntax_highlight code={@mix_template} />
+  </.card>
+
+  <.card title="Modify templates">
+    <div class="space-y-2">
+      <.syntax_highlight code={@root_template} />
+      <.syntax_highlight code={@app_template} />
+    </div>
+  </.card>
+</div>
