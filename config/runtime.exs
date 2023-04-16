@@ -10,13 +10,13 @@ import Config
 # ## Using releases
 #
 # If you use `mix release`, you need to explicitly enable the server
-# by passing the PHX_SERVER=true when you start it:
+# by passing the PALETTE_DOCS_SERVER=true when you start it:
 #
-#     PHX_SERVER=true bin/palette_docs start
+#     PALETTE_DOCS_SERVER=true bin/palette_docs start
 #
-# Alternatively, you can use `mix phx.gen.release` to generate a `bin/server`
+# Alternatively, you can use `mix PALETTE_DOCS.gen.release` to generate a `bin/server`
 # script that automatically sets the env var above.
-if System.get_env("PHX_SERVER") do
+if System.get_env("PALETTE_DOCS_SERVER") do
   config :palette_docs, PaletteDocsWeb.Endpoint, server: true
 end
 
@@ -27,14 +27,14 @@ if config_env() == :prod do
   # to check this value into version control, so we use an environment
   # variable instead.
   secret_key_base =
-    System.get_env("SECRET_KEY_BASE") ||
+    System.get_env("PALETTE_DOCS_SECRET_KEY_BASE") ||
       raise """
       environment variable SECRET_KEY_BASE is missing.
-      You can generate one by calling: mix phx.gen.secret
+      You can generate one by calling: mix PALETTE_DOCS.gen.secret
       """
 
-  host = System.get_env("PHX_HOST") || "example.com"
-  port = String.to_integer(System.get_env("PORT") || "4000")
+  host = System.get_env("PALETTE_DOCS_HOST") || "example.com"
+  port = String.to_integer(System.get_env("PALETTE_DOCS_PORT") || "4000")
 
   config :palette_docs, PaletteDocsWeb.Endpoint,
     url: [host: host, port: 443, scheme: "https"],
